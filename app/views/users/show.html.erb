@@ -12,6 +12,7 @@
  <%end%>
  <p><%= link_to 'Edit Profile', edit_user_path(@user) %> </br>
  	<%= link_to 'Change Photo','#',:onclick => "$('#change_photo').show(); return false;"%></p>
+  <p><%= link_to "New review",user_reviews_path(current_user.id) %></p>
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -41,4 +42,5 @@
  <p><b>Address-</b><%= @user.address%></p>
  <p><b>About Me-</b><%= @user.about_me%></p>
 </div>
+
 </div>

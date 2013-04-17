@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130417071152) do
+ActiveRecord::Schema.define(:version => 20130417104337) do
 
   create_table "reviews", :force => true do |t|
     t.text     "review_text"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20130417071152) do
     t.integer  "category_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "title"
   end
 
   create_table "users", :force => true do |t|
