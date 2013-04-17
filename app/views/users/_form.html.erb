@@ -1,0 +1,48 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= image_tag @user.photo.url(:small) %>
+   <p> <%= f.file_field :photo%></p>
+  </div>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+    <p>
+    <%= f.radio_button(:gender, true) %>
+    <%= f.label(:gender_male_true, "Male") %>
+    <%= f.radio_button(:gender, false) %>
+    <%= f.label(:gender_female_false, "Female") %>
+    </p>
+  </div>
+
+  <div class="field">
+    <%= f.label :DoB,"Date Of Birth" %><br/>
+    <%= f.date_select(:DoB, :method => "post", :start_year => 1980) %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= f.label :about_me %><br />
+    <%= f.text_field :about_me %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

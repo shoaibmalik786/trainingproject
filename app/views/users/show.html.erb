@@ -1,0 +1,44 @@
+<div id ="container">
+<h1>My Reviews</h1>
+<div id = "photo">
+ <% if @user.photo.present? %>
+    <div id="user_photo">
+    <%= image_tag @user.photo.url(:small) %>
+    </div>
+ <% else %>
+    <div id="no_photo">
+     <%= "Photo is not available" %>
+    </div>
+ <%end%>
+ <p><%= link_to 'Edit Profile', edit_user_path(@user) %> </br>
+ 	<%= link_to 'Change Photo','#',:onclick => "$('#change_photo').show(); return false;"%></p>
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+       <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+       <% end %>
+      </ul>
+    </div>
+  <% end %>
+ <div id= "change_photo">
+    <%= f.file_field :photo%>
+    <p><%= f.submit %></p>
+ </div>
+<%end%>
+</div>
+<div id = "profile" >
+ <p><b>Name-</b><%= @user.name%></p>
+ <p><b>Date Of Birth-</b><%= @user.DoB%></p>
+ <%if @user.gender == true %>
+ <p><b>Gender-</b>Male</p>
+ <%else%>
+ <p><b>Gender-</b>Female</p>
+ <%end%>
+ <p><b>Address-</b><%= @user.address%></p>
+ <p><b>About Me-</b><%= @user.about_me%></p>
+</div>
+</div>
